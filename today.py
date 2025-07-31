@@ -227,8 +227,12 @@ def cache_builder(edges, comment_size, force_cache, loc_add=0, loc_del=0):
             data = f.readlines()
     except FileNotFoundError: # If the cache file doesn't exist, create it
         data = []
-        if comment_size > 0:
-            for _ in range(comment_size): data.append('This line is a comment block. Write whatever you want here.\n')
+        data.append('This is a cache of all of the repositories I own, have contributed to, or am a member of.\n')
+        data.append('repository (hashed)  total commits  my commits  LOC added by me  LOC deleted by me\n')
+        data.append('         \                \                \           \_____________  \\n')
+        data.append('          \                \                \______________________  \  \\n')
+        data.append('           \                \___________________________________   \  \  \\n')
+        data.append('____________\___________________________________________________\___\__\__\_______\n')
         with open(filename, 'w') as f:
             f.writelines(data)
 
